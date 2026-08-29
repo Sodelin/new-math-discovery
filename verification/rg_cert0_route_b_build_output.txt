@@ -1,0 +1,8 @@
+Command: python -B verification/build_rg_cert0_route_b.py --output verification/rg_cert0_route_b_k12.json
+Exit code: 0
+
+Route B search: K=12, max_back_depth=16, max_states_per_target=50000
+stopped-map split detail: R=3 old_lower=0 new_lower=1 positive_source_parameters=[2]
+ordinary cylinders: searched=2048, certified=1903, unresolved=145
+stopped-map translation: imported=1903, raised_domains=1, excluded_instances=1, terminal_exclusions=0, singleton_edges=1
+bundle: edges=1905, coverage_modulus=4096, exact_uncovered_residues=145, claim=partial

@@ -7,7 +7,7 @@ residue/coalescence certificate.
 
 It proves a general soundness theorem:
 
-> if finitely described symbolic configurations cover every positive odd
+> if finitely described symbolic configurations cover every positive
 > integer, every nonterminal configuration has an exact finite Collatz
 > coalescence edge to a strictly lower-ranked configuration, and the declared
 > rank is genuinely well-founded, then the Collatz conjecture follows.
@@ -66,10 +66,10 @@ An abstract ranked coalescence system consists of:
 2. a decoder
 
    \[
-   \delta:\mathcal C\longrightarrow 2\mathbb N+1
+   \delta:\mathcal C\longrightarrow\mathbb N_{>0}
    \]
 
-   whose values are positive odd integers;
+   whose values are positive integers;
 3. a fixed rank dimension \(d\ge1\) and rank
 
    \[
@@ -94,10 +94,10 @@ The system is **valid** when it satisfies all three semantic conditions:
 
 ### V1. Entry coverage
 
-Every positive odd integer has an entry representation:
+Every positive integer has an entry representation:
 
 \[
-\forall n\in2\mathbb N+1\;\exists c\in E,
+\forall n\in\mathbb N_{>0}\;\exists c\in E,
 \qquad \delta(c)=n. \tag{2}
 \]
 
@@ -169,11 +169,9 @@ coalescence identity (1), so the coalescence lemma gives
 \(\operatorname{Conv}(\delta(c))\). This completes the well-founded
 induction.
 
-Now let \(n\) be any positive odd integer. V1 supplies an entry configuration
+Now let \(n\) be any positive integer. V1 supplies an entry configuration
 \(c\) with \(\delta(c)=n\), and the result just proved gives
-\(\operatorname{Conv}(n)\). Every positive even integer reaches a positive
-odd integer after finitely many halving steps, so every positive integer
-converges.
+\(\operatorname{Conv}(n)\). Thus every positive integer converges.
 
 Finally, the stopped map agrees with the ordinary Collatz map up to the first
 visit to \(1\). Hence this is exactly the ordinary Collatz conjecture. Since
@@ -196,7 +194,7 @@ A finite guarded graph certificate contains:
 3. for each node, a decoder
 
    \[
-   \delta_q:D_q\longrightarrow2\mathbb N+1;
+   \delta_q:D_q\longrightarrow\mathbb N_{>0};
    \]
 
 4. for each designated entry node \(q\), an entry-domain predicate
@@ -245,14 +243,14 @@ conditions below decidable. A concrete certificate format must therefore
 either restrict all domains and expressions to a theory with a proved decision
 procedure, or carry finite proof objects that a trusted checker validates.
 
-**F1. Domain safety.** Every decoder value is a positive odd integer, and
+**F1. Domain safety.** Every decoder value is a positive integer, and
 every rank coordinate is a natural number, throughout its whole declared
 domain.
 
 **F2. Exact entry coverage.** The entry families satisfy
 
 \[
-\forall n\in2\mathbb N+1\;\exists(q,p)\in E,
+\forall n\in\mathbb N_{>0}\;\exists(q,p)\in E,
 \qquad \delta_q(p)=n. \tag{8}
 \]
 
@@ -402,7 +400,7 @@ F1--F7.
 A candidate must therefore provide, in one reviewable bundle:
 
 1. the finite node, domain, decoder, guard, and target tables;
-2. exact entry coverage of all positive odd integers;
+2. exact entry coverage of all positive integers;
 3. exact parity traces and coalescence identities for every edge;
 4. a fixed-dimensional natural-valued rank with strict decrease on every
    guarded edge;
@@ -432,7 +430,7 @@ The current Lean module does **not** yet formalize:
 
 - the stopped ordinary Collatz function or its equivalence to the standard and
   accelerated formulations;
-- positive-odd decoder safety and the even-to-odd reduction;
+- positive decoder safety;
 - lexicographic well-foundedness for a concrete \(\mathbb N^d\) rank;
 - finite guarded tables, parity-trace replay, or the F1--F7 checker.
 

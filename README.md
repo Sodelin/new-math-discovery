@@ -1,12 +1,13 @@
 # New Math Discovery
 
-This repository presents a focused obstruction theorem for one proposed
-Collatz ranking architecture.
+This repository presents a focused obstruction theorem, an audited global
+certificate semantics, and a concrete exact partial construction for the
+Collatz problem.
 
 > **Mathematical status:** this is not a proof or disproof of the Collatz
-> conjecture. The current result rules out a precisely stated class of
-> finite-fixed-center corrected-log potentials with a sub-bitlength descent
-> horizon.
+> conjecture. The obstruction rules out a precisely stated method class. The
+> current graph bundle validates 1,905 exact edges but still fails global
+> source coverage on 145 residue classes.
 
 ## Main result
 
@@ -35,9 +36,23 @@ The stronger quantified statement and proof are in [THEOREM.md](THEOREM.md).
 
 [RG-SOUND-001.md](RG-SOUND-001.md) defines a finite guarded
 residue/coalescence graph certificate and proves the general soundness theorem:
-exact entry coverage, total finite coalescence progress, and strict decrease in
-a well-founded rank imply Collatz convergence. The theorem permits temporary
-numerical growth.
+exact coverage of all positive integers, total finite coalescence progress,
+and strict decrease in a well-founded rank imply Collatz convergence. The
+theorem permits temporary numerical growth.
+
+[RG-CERT-0.md](RG-CERT-0.md) freezes the first concrete checker language. Its
+one-node bootstrap specialization uses the exact numerical rank. The retained
+\(K=12\) bundle contains:
+
+- one uniform edge covering every even decoded input;
+- 1,903 exact smaller-target edges for odd residue cylinders;
+- one stopped-map singleton repair for \(n=3\); and
+- 145 explicitly reported uncovered source residues modulo 4,096.
+
+All 1,905 serialized edges pass exact stopped-map trace, closure,
+coalescence-identity, and rank-decrease checks. F3 source coverage is
+incomplete, so the bundle is a precise construction boundary rather than a
+global Collatz certificate.
 
 The abstract kernel is compiled in
 [`lean/NewMathDiscovery/RankedCoalescenceSound.lean`](lean/NewMathDiscovery/RankedCoalescenceSound.lean).
@@ -65,11 +80,18 @@ potential non-increase inside the claimed sub-bitlength horizon.
 - [THEOREM.md](THEOREM.md) is the human-checkable mathematical artifact.
 - [RG-SOUND-001.md](RG-SOUND-001.md) is the audited global-certificate
   semantics and construction specification.
+- [RG-CERT-0.md](RG-CERT-0.md) is the audited exact bootstrap data language.
 - [STATUS.md](STATUS.md) states exactly what is and is not claimed.
 - [PROVENANCE.md](PROVENANCE.md) maps this reconstruction to its source archive.
 - [`verification/check_h_fcs_001.py`](verification/check_h_fcs_001.py) checks
   the finite algebra and representative exact shadows; it does not replace any
   infinite or uniform argument.
+- [`verification/check_rg_cert0.py`](verification/check_rg_cert0.py) is the
+  fail-closed independent checker; the producer is deliberately separate.
+- [`verification/rg_cert0_route_b_k12.json`](verification/rg_cert0_route_b_k12.json)
+  is the static partial certificate data.
+- [`verification/README.md`](verification/README.md) explains the trusted
+  checker/untrusted producer boundary and all reproduction commands.
 
 The verifier requires Python 3.8 or newer and uses only the standard library.
 Run it from the repository root without optimized mode:
@@ -90,6 +112,32 @@ lake build
 
 The reviewed transcript is retained in
 [`verification/lean_rg_sound_build_output.txt`](verification/lean_rg_sound_build_output.txt).
+
+Audit the static partial construction:
+
+```powershell
+python -B verification/check_rg_cert0.py --self-test
+python -B verification/check_rg_cert0.py verification/rg_cert0_route_b_k12.json
+```
+
+Require a genuinely global result with the stricter gate below. It currently
+exits nonzero because 145 residue classes remain uncovered:
+
+```powershell
+python -B verification/check_rg_cert0.py --require-global verification/rg_cert0_route_b_k12.json
+```
+
+The deterministic, untrusted producer can rebuild the static data at a new
+path:
+
+```powershell
+python -B verification/build_rg_cert0_route_b.py --output <new-json-path>
+```
+
+Reviewed build and check transcripts are retained in
+[`verification/rg_cert0_route_b_build_output.txt`](verification/rg_cert0_route_b_build_output.txt)
+and
+[`verification/rg_cert0_route_b_check_output.txt`](verification/rg_cert0_route_b_check_output.txt).
 
 The broader exploratory archive remains in
 [Sodelin/Collatz-Conjecture-Work](https://github.com/Sodelin/Collatz-Conjecture-Work).

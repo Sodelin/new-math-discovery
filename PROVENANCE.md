@@ -29,6 +29,9 @@ The ranked-coalescence soundness reconstruction also uses:
   which supplies the exact Collatz endpoint;
 - [Lean verification policy](https://github.com/Sodelin/Collatz-Conjecture-Work/blob/2e7eae2bb998b14e5443e6c440154130a0049467/lean/VERIFICATION_POLICY.md),
   which requires general certificate soundness before untrusted search.
+- [Round 7 affine coalescence search](https://github.com/Sodelin/Collatz-Conjecture-Work/blob/2e7eae2bb998b14e5443e6c440154130a0049467/verification/round7_affine_coalescence_search.py),
+  which supplies the bounded ordinary-map Route B certificates imported by
+  RG-CERT-0.
 
 `H-FCS-001` is presented here as a standalone direct theorem. It does not use
 the quantitative debt conclusion of Theorem 6A.1; it uses the underlying
@@ -78,7 +81,7 @@ pre-existing graph certificate.
 
 ```text
 RG-SOUND-001.md
-SHA-256 2B544B2675FD2EF6D3D7CF38C089331D6189570A3FD63AC2A6C96721DCF21286
+SHA-256 65713EEFA86916EF4514BBF9513B113FA7499D4E148CEC18593A1B67079424D3
 
 lean/NewMathDiscovery/RankedCoalescenceSound.lean
 SHA-256 2F6B8B6DC0BA491A17ED1C4B31A8C8ECF56D3F9EDE3E91DE595379A007E97EAF
@@ -86,3 +89,58 @@ SHA-256 2F6B8B6DC0BA491A17ED1C4B31A8C8ECF56D3F9EDE3E91DE595379A007E97EAF
 verification/lean_rg_sound_build_output.txt
 SHA-256 A390D38FD77B09ED1258C5F43F0535AC6E86D5A6703AC4B08C6598673FE0A2AE
 ```
+
+The RG-SOUND paper checksum changed when the decoder and entry coverage were
+generalized consistently from positive odd integers to all positive integers.
+The abstract Lean kernel was already carrier-generic, so its source and build
+transcript did not change.
+
+## RG-CERT-0 Route B reconstruction
+
+The imported archive source had this working-copy checksum on 2026-08-29; it
+was tracked and unmodified relative to the accepted archive baseline:
+
+```text
+Collatz-Conjecture-Work/verification/round7_affine_coalescence_search.py
+SHA-256 36CF236477063D915B470343713DCEE2A4F0D53A9FCA80C9DAD5F1226655D8A1
+```
+
+That archive program checks the unstopped ordinary map, for which \(U(1)=4\).
+The publication producer reconstructs the search, translates its data to the
+stopped map required by RG-SOUND-001, and emits static JSON. This translation
+found one boundary exception: the \(R=3\) family had to start at \(x=1\), and
+the excluded input \(n=3\) received the explicit stopped trace `OEOEEEE` to
+\(1\).
+
+The schema, independent checker, untrusted producer, and exact data reviewed
+for this milestone are:
+
+```text
+RG-CERT-0.md
+SHA-256 53AC5DBE8A3FB1A17A3879863C050BAAB818999601E151948CD387DCBBBA86FA
+
+verification/check_rg_cert0.py
+SHA-256 7D6F5A61FB5D718C4F45265E30A0B9715472911FC5D2A9F607DDF928B8B2FA6A
+
+verification/build_rg_cert0_route_b.py
+SHA-256 00AFE86AD0EC5F8BF6ABF4F279297E859B50E6AEFA9F93A5E475FE8416BE7B5E
+
+verification/rg_cert0_route_b_k12.json
+SHA-256 5599F8C39449D944543E52377DA6E20C2FA941902B0403E9EC17BF3BBA25812B
+
+verification/rg_cert0_route_b_build_output.txt
+SHA-256 2B6A142F21FBBA724905A79096A243E3361F10124AB383F23DAB1337E51D2A46
+
+verification/rg_cert0_route_b_check_output.txt
+SHA-256 6DB64CD87860DF1052BA960A931EB007E02E2C4DBC0150EBC2A0BBC41C1D44E7
+```
+
+An independent audit rebuilt the JSON byte-for-byte and attacked the checker
+with a false global claim, an empty coverage report, corrupted traces and
+endpoints, removal of the \(n=3\) repair, duplicate JSON keys, nonstandard
+constants, boolean numerics, and optimized Python mode. Every hostile case
+exited nonzero without printing `GLOBAL RG-CERT-0 PASS`.
+
+The accepted partial bundle has 1,905 universally valid edges and exactly 145
+uncovered source residues modulo 4,096. It does not satisfy F3 and is not a
+Collatz proof.

@@ -13,8 +13,14 @@ The Collatz conjecture remains unresolved.
 
 `RG-SOUND-001` now supplies the audited human certificate semantics for a
 ranked coalescence graph. Its abstract soundness kernel compiles in Lean with
-no proof holes. No finite graph satisfying F1--F7 has been constructed, so
-this is proof infrastructure rather than a Collatz resolution.
+no proof holes.
+
+`RG-CERT-0/v0` supplies the first audited concrete checker and static partial
+graph. All 1,905 listed edges pass F4--F7: one structural even-input edge,
+1,903 Route B odd-cylinder edges, and one exact stopped-map repair for
+\(n=3\). Exact F3 checking finds 145 uncovered source residues modulo 4,096.
+The bundle therefore fails the global gate and remains proof-construction
+infrastructure rather than a Collatz resolution.
 
 ## Claim classification
 
@@ -29,6 +35,10 @@ this is proof infrastructure rather than a Collatz resolution.
   on the written proof.
 - **Review status:** internal mathematical and reproducibility gates passed;
   external specialist review pending.
+
+For the graph construction, the reviewed claim is narrower: every serialized
+edge is universally valid and the incompleteness boundary is exact. No global
+cover, richer recursive rank, or Collatz conclusion is claimed.
 
 ## Promotion gates
 
@@ -54,6 +64,21 @@ Internal package gates:
 | F1--F7 finite-interface typing/checkability | Passed after repair |
 | Core Lean build | Passed on pinned Lean 4.33.1 |
 | Lean axiom audit | Standard axioms only; no `sorryAx` |
-| Concrete globally covering graph | Missing |
-| Concrete F1--F7 checker | Not yet implemented |
+| Concrete F1--F7 checker | Implemented for RG-CERT-0/v0 |
+| Concrete globally covering graph | Missing; 145 F3 residue gaps |
 | External specialist review | Pending |
+
+## RG-CERT-0 gates
+
+| Gate | Result |
+|---|---|
+| Schema-to-F1--F7 audit | Passed after three specification repairs |
+| Dependency-free checker self-test | Passed |
+| Static bundle edge audit | 1,905 edges passed F4--F7 |
+| Exact F3 source coverage | Incomplete on 145 residues modulo 4,096 |
+| Stopped-map boundary at \(1\) | Repaired explicitly for \(n=3\) |
+| Independent deterministic rebuild | Byte-identical |
+| Hostile malformed-data mutations | Rejected; no false global PASS |
+| Optimized-mode false-PASS test | Passed; fails closed |
+| `--require-global` gate | Correctly exits nonzero |
+| Global RG-CERT-0 certificate | Missing |
