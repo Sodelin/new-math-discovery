@@ -1,0 +1,7 @@
+name = "new_math_discovery"
+version = "0.1.0"
+defaultTargets = ["NewMathDiscovery"]
+
+[[lean_lib]]
+name = "NewMathDiscovery"
+srcDir = "lean"

@@ -31,6 +31,19 @@ large positive odd \(n\).
 
 The stronger quantified statement and proof are in [THEOREM.md](THEOREM.md).
 
+## Global construction interface
+
+[RG-SOUND-001.md](RG-SOUND-001.md) defines a finite guarded
+residue/coalescence graph certificate and proves the general soundness theorem:
+exact entry coverage, total finite coalescence progress, and strict decrease in
+a well-founded rank imply Collatz convergence. The theorem permits temporary
+numerical growth.
+
+The abstract kernel is compiled in
+[`lean/NewMathDiscovery/RankedCoalescenceSound.lean`](lean/NewMathDiscovery/RankedCoalescenceSound.lean).
+No actual globally covering graph is claimed yet; constructing one satisfying
+all obligations F1--F7 is the remaining research target.
+
 ## Why the obstruction works
 
 An infinite family of pairwise-disjoint negative rational periodic orbits has
@@ -50,6 +63,8 @@ potential non-increase inside the claimed sub-bitlength horizon.
 ## Repository contract
 
 - [THEOREM.md](THEOREM.md) is the human-checkable mathematical artifact.
+- [RG-SOUND-001.md](RG-SOUND-001.md) is the audited global-certificate
+  semantics and construction specification.
 - [STATUS.md](STATUS.md) states exactly what is and is not claimed.
 - [PROVENANCE.md](PROVENANCE.md) maps this reconstruction to its source archive.
 - [`verification/check_h_fcs_001.py`](verification/check_h_fcs_001.py) checks
@@ -65,6 +80,16 @@ python -B verification/check_h_fcs_001.py
 
 The reviewed transcript is retained in
 [`verification/check_h_fcs_001_output.txt`](verification/check_h_fcs_001_output.txt).
+
+Compile and axiom-audit the abstract ranked-coalescence soundness theorem with
+the pinned Lean 4.33.1 toolchain:
+
+```powershell
+lake build
+```
+
+The reviewed transcript is retained in
+[`verification/lean_rg_sound_build_output.txt`](verification/lean_rg_sound_build_output.txt).
 
 The broader exploratory archive remains in
 [Sodelin/Collatz-Conjecture-Work](https://github.com/Sodelin/Collatz-Conjecture-Work).

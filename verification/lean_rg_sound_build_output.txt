@@ -1,0 +1,12 @@
+Command: lake build
+Toolchain: leanprover/lean4:v4.33.1
+
+ℹ [2/4] Replayed NewMathDiscovery.RankedCoalescenceSound
+info: lean/NewMathDiscovery/RankedCoalescenceSound.lean:122:0: 'NewMathDiscovery.RankedCoalescence.iterate_add' depends on axioms: [propext]
+info: lean/NewMathDiscovery/RankedCoalescenceSound.lean:123:0: 'NewMathDiscovery.RankedCoalescence.reaches_iterate' depends on axioms: [propext]
+info: lean/NewMathDiscovery/RankedCoalescenceSound.lean:124:0: 'NewMathDiscovery.RankedCoalescence.coalescence_transfer' depends on axioms: [propext]
+info: lean/NewMathDiscovery/RankedCoalescenceSound.lean:125:0: 'NewMathDiscovery.RankedCoalescence.ranked_coalescence_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/NewMathDiscovery/RankedCoalescenceSound.lean:126:0: 'NewMathDiscovery.RankedCoalescence.covered_ranked_coalescence_sound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+Build completed successfully (4 jobs).

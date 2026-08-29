@@ -11,6 +11,11 @@ formalized in a proof assistant.
 
 The Collatz conjecture remains unresolved.
 
+`RG-SOUND-001` now supplies the audited human certificate semantics for a
+ranked coalescence graph. Its abstract soundness kernel compiles in Lean with
+no proof holes. No finite graph satisfying F1--F7 has been constructed, so
+this is proof infrastructure rather than a Collatz resolution.
+
 ## Claim classification
 
 - **Claim type:** class-wide method obstruction.
@@ -39,3 +44,16 @@ Internal package gates:
 | Collatz-resolution scope boundary | Passed internally |
 | External specialist review | Pending |
 | Proof-assistant formalization | Not attempted |
+
+## RG-SOUND-001 gates
+
+| Gate | Result |
+|---|---|
+| Stopped-map tail and coalescence lemmas | Passed independent audit |
+| Well-founded ranked soundness proof | Passed independent audit |
+| F1--F7 finite-interface typing/checkability | Passed after repair |
+| Core Lean build | Passed on pinned Lean 4.33.1 |
+| Lean axiom audit | Standard axioms only; no `sorryAx` |
+| Concrete globally covering graph | Missing |
+| Concrete F1--F7 checker | Not yet implemented |
+| External specialist review | Pending |
