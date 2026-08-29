@@ -58,6 +58,8 @@ The abstract kernel is compiled in
 [`lean/NewMathDiscovery/RankedCoalescenceSound.lean`](lean/NewMathDiscovery/RankedCoalescenceSound.lean).
 No actual globally covering graph is claimed yet; constructing one satisfying
 all obligations F1--F7 is the remaining research target.
+[CONSTRUCTION.md](CONSTRUCTION.md) is the canonical dependency-gated backlog
+for that target.
 
 ## Why the obstruction works
 
@@ -81,6 +83,8 @@ potential non-increase inside the claimed sub-bitlength horizon.
 - [RG-SOUND-001.md](RG-SOUND-001.md) is the audited global-certificate
   semantics and construction specification.
 - [RG-CERT-0.md](RG-CERT-0.md) is the audited exact bootstrap data language.
+- [CONSTRUCTION.md](CONSTRUCTION.md) is the single active global-construction
+  backlog and architecture filter.
 - [STATUS.md](STATUS.md) states exactly what is and is not claimed.
 - [PROVENANCE.md](PROVENANCE.md) maps this reconstruction to its source archive.
 - [`verification/check_h_fcs_001.py`](verification/check_h_fcs_001.py) checks
