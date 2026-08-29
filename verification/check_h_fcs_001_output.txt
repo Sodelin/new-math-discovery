@@ -1,0 +1,8 @@
+H-FCS-001 EXACT DIAGNOSTICS
+Scope: finite algebra checks; not an infinite proof and not Collatz.
+
+PASS A: 78 cycles and 3237 distinct phases checked.
+PASS B: 60 exact lifts checked through their endpoints.
+PASS C: 3 finite-center horizon contradictions: ((4, 8, 0), (7, 16, 0), (19, 32, 0)).
+
+H-FCS-001 DIAGNOSTICS = PASS
