@@ -144,3 +144,38 @@ exited nonzero without printing `GLOBAL RG-CERT-0 PASS`.
 The accepted partial bundle has 1,905 universally valid edges and exactly 145
 uncovered source residues modulo 4,096. It does not satisfy F3 and is not a
 Collatz proof.
+
+## RG-MACRO-001 symbolic reconstruction
+
+RG-MACRO-001 was derived in the publication repository from the already
+reviewed static RG-CERT-0 bundle and the elementary affine trace convention.
+It does not claim that the archive stated the resulting closed macro theorem,
+and no literature-novelty claim is made.  The archive remains the provenance
+source for the original Route B search and its bounded K=12 boundary.
+
+The new classifier does not import or execute that search.  It reconstructs
+every uniform source prefix and tests only empty, `O`, and the proved family
+\(O(EO)^kEEO\) for \(0\le k\le6\).  Its exact selected affine maps, traces,
+stopped lower bounds, and 145-cylinder complement match the static bundle.
+
+The independently reviewed artifacts are:
+
+```text
+RG-MACRO-001.md
+SHA-256 951E995EB3274E451BA447857EDE5B2EC33F304F5A36D83C36186D68C9C8FFF3
+
+verification/check_rg_macro_001.py
+SHA-256 3975A24103EC504B7FE62F9A5962A44027F10F0D0656A40D2D0A8F0FE85185AE
+
+verification/check_rg_macro_001_output.txt
+SHA-256 1A0E05C2CAC882CD69017B376F3FA3364E0341154C61B6BA88E2B7A44D678401
+```
+
+Independent review rederived the one-bit and target-word formulas, checked
+440 pointwise macro cases and 510 affine child refinements, reproduced the
+full transcript, and confirmed fail-closed optimized mode.  Hostile mutations
+to Route B coefficients and traces, the uncovered set, JSON numeric types and
+constants, top-level claim and map labels, non-Route-B records, duplicate
+keys, missing edges, and extra edges were all rejected.  The authoritative
+RG-CERT-0 checker remains a mandatory companion because RG-MACRO-001 is a
+symbolic-classification audit, not a second F1--F7 semantics checker.

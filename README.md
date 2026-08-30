@@ -54,6 +54,21 @@ coalescence-identity, and rank-decrease checks. F3 source coverage is
 incomplete, so the bundle is a precise construction boundary rather than a
 global Collatz certificate.
 
+[RG-MACRO-001.md](RG-MACRO-001.md) replaces the operational description of
+that boundary by exact formulas.  It proves a universal one-bit affine
+refinement theorem and shows that all 1,903 Route B targets use only empty,
+`O`, or the family
+
+\[
+O(EO)^kEEO,
+\qquad 1\le k\le6.
+\]
+
+A separate formula classifier reconstructs the selected affine data and the
+exact 145-cylinder complement without importing or executing the archived
+breadth-first search.  This completes the symbolic-description gate; finite
+transition closure and a well-founded rank are still missing.
+
 The abstract kernel is compiled in
 [`lean/NewMathDiscovery/RankedCoalescenceSound.lean`](lean/NewMathDiscovery/RankedCoalescenceSound.lean).
 No actual globally covering graph is claimed yet; constructing one satisfying
@@ -83,6 +98,8 @@ potential non-increase inside the claimed sub-bitlength horizon.
 - [RG-SOUND-001.md](RG-SOUND-001.md) is the audited global-certificate
   semantics and construction specification.
 - [RG-CERT-0.md](RG-CERT-0.md) is the audited exact bootstrap data language.
+- [RG-MACRO-001.md](RG-MACRO-001.md) is the closed-form symbolic compression
+  of the current partial-certificate frontier.
 - [CONSTRUCTION.md](CONSTRUCTION.md) is the single active global-construction
   backlog and architecture filter.
 - [STATUS.md](STATUS.md) states exactly what is and is not claimed.
@@ -92,6 +109,8 @@ potential non-increase inside the claimed sub-bitlength horizon.
   infinite or uniform argument.
 - [`verification/check_rg_cert0.py`](verification/check_rg_cert0.py) is the
   fail-closed independent checker; the producer is deliberately separate.
+- [`verification/check_rg_macro_001.py`](verification/check_rg_macro_001.py)
+  independently reconstructs the finite macro classification from formulas.
 - [`verification/rg_cert0_route_b_k12.json`](verification/rg_cert0_route_b_k12.json)
   is the static partial certificate data.
 - [`verification/README.md`](verification/README.md) explains the trusted
@@ -142,6 +161,16 @@ Reviewed build and check transcripts are retained in
 [`verification/rg_cert0_route_b_build_output.txt`](verification/rg_cert0_route_b_build_output.txt)
 and
 [`verification/rg_cert0_route_b_check_output.txt`](verification/rg_cert0_route_b_check_output.txt).
+
+Reproduce the symbolic macro classification:
+
+```powershell
+python -B verification/check_rg_macro_001.py --self-test
+python -B verification/check_rg_macro_001.py
+```
+
+The retained transcript is
+[`verification/check_rg_macro_001_output.txt`](verification/check_rg_macro_001_output.txt).
 
 The broader exploratory archive remains in
 [Sodelin/Collatz-Conjecture-Work](https://github.com/Sodelin/Collatz-Conjecture-Work).

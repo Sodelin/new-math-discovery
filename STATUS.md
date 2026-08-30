@@ -22,6 +22,14 @@ graph. All 1,905 listed edges pass F4--F7: one structural even-input edge,
 The bundle therefore fails the global gate and remains proof-construction
 infrastructure rather than a Collatz resolution.
 
+`RG-MACRO-001` supplies an exact formula-level description of the same finite
+frontier.  Its fixed grammar reconstructs all 1,903 Route B affine targets and
+the same 145-cylinder complement without invoking the archived reverse
+search.  It also proves an exact binary refinement of each gap into one child
+preserving the maximal endpoint exponent and one child incrementing it.  No
+finite transition closure or globally decreasing rank follows from that
+refinement.
+
 ## Claim classification
 
 - **Claim type:** class-wide method obstruction.
@@ -82,3 +90,20 @@ Internal package gates:
 | Optimized-mode false-PASS test | Passed; fails closed |
 | `--require-global` gate | Correctly exits nonzero |
 | Global RG-CERT-0 certificate | Missing |
+
+## RG-MACRO-001 gates
+
+| Gate | Result |
+|---|---|
+| One-bit affine refinement theorem | Proved exactly |
+| Closed form for \(O(EO)^kEEO\) | Proved with necessary-and-sufficient parity guards |
+| Formula-only reconstruction | Exact match on all 1,903 Route B edges |
+| Exact complement | 145 cylinders, matching RG-CERT-0 |
+| Stopped-map lower bounds | Reconstructed exactly |
+| Gap-child identities | 290/290 passed exact coefficient comparison |
+| Independent derivation and hostile-data audit | Passed |
+| Optimized-mode false-PASS test | Passed; fails closed |
+| Authoritative RG-CERT-0 companion audit | Passed; remains explicitly partial |
+| Finite guarded transition closure | Missing; next construction gate |
+| Rank decrease across all gap successors | Missing |
+| Global Collatz consequence | None |

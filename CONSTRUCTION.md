@@ -55,6 +55,22 @@ The unique \(s=12\) cylinder is the Mersenne residue \(R=4095\). The table is
 an exact classification of this bounded certificate frontier, not a Collatz
 invariant.
 
+[RG-MACRO-001.md](RG-MACRO-001.md) now gives an exact symbolic description of
+this frontier without invoking the archived breadth-first search.  The 1,903
+Route B edges use only empty, `O`, and
+
+\[
+w_k=O(EO)^kEEO,
+\qquad 1\le k\le6.
+\]
+
+The closed inverse formula and its necessary-and-sufficient affine guards
+reproduce every selected target and leave exactly the same 145 complementary
+cylinders.  The note also proves the universal one-bit child formula: every
+maximal endpoint \(3^s x+B\) refines into exactly one exponent-\(s\) child and
+one exponent-\(s+1\) child.  This completes the `T1` description gate.  It
+does not prove that the refined children form a finite closed state system.
+
 One-bit bounded-search refinement from \(K=12\) to \(K=13\) gives 18
 low-resolved/high-unresolved parents, 27 low-unresolved/high-resolved parents,
 and 100 parents with both children still unresolved. At longer horizons the
@@ -160,15 +176,16 @@ This table is the single active backlog for the construction program.
 | ID | Deliverable | Dependency | Status | Promotion test |
 |---|---|---|---|---|
 | `C0` | RG-CERT-0 schema, checker, and static \(K=12\) boundary | RG-SOUND-001 | Published | Hostile audit passed |
-| `T1` | Exact symbolic features for the 145 gaps | C0 | Active | Formulas reproduce all 145 without using “search miss” as a state invariant |
-| `T2` | Finite guarded child/successor transition table | T1 | Pending | Universal guard partition and exact identities |
+| `T1` | Exact symbolic features for the 145 gaps | C0 | Completed | RG-MACRO-001 formulas reproduce all 145 without using “search miss” as a state invariant |
+| `T2` | Finite guarded child/successor transition table | T1 | Active | Universal guard partition and exact identities |
 | `R1` | First rank or smaller-target mechanism for every T2 edge | T2 | Pending | Passes B1--B4 kill tests |
 | `S1` | RG-CERT-1 language and checker correspondence | T2, R1 | Pending | Independent specification audit |
 | `G1` | Static globally covering certificate | S1 | Pending | `--require-global` succeeds and F1--F7 audit passes |
 
-Only `T1` may consume exploratory computation now. `T2` starts only from
-exact formulas, and schema/checker work starts only after a rank mechanism
-survives its kill tests.
+Only `T2` may consume exploratory computation now, and every proposed state
+must be a quotient of the exact RG-MACRO-001 coefficient/guard data rather
+than a raw finite-horizon miss bitmask. Schema/checker work starts only after
+a rank mechanism survives its kill tests.
 
 ## 7. Work and review discipline
 
