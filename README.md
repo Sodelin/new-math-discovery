@@ -67,12 +67,27 @@ O(EO)^kEEO,
 A separate formula classifier reconstructs the selected affine data and the
 exact 145-cylinder complement without importing or executing the archived
 breadth-first search.  This completes the symbolic-description gate; finite
-transition closure and a well-founded rank are still missing.
+transition closure is supplied separately below.
+
+[RG-TRANS-001.md](RG-TRANS-001.md) now closes the transition side globally.
+Every positive integer has a unique label
+
+\[
+N_{r,\eta}(w)=2^r(4w+2\eta+1)-1.
+\]
+
+A five-row parametric table sends every soft label to an exact smaller
+coalescing target and closes the remaining hard labels under one return map
+\(F\).  An odd-affine valuation theorem places every instance of all 145 gaps
+into that table.  This is a global transition construction, but not a Collatz
+proof: termination of \(F\) is Collatz-equivalent, and no independent
+well-founded rank for all \(F\)-edges is known.
 
 The abstract kernel is compiled in
 [`lean/NewMathDiscovery/RankedCoalescenceSound.lean`](lean/NewMathDiscovery/RankedCoalescenceSound.lean).
-No actual globally covering graph is claimed yet; constructing one satisfying
-all obligations F1--F7 is the remaining research target.
+No globally ranked graph satisfying all obligations F1--F7 is claimed.
+Transition coverage is now global, but constructing an independent rank that
+decreases on every hard return is the remaining research target.
 [CONSTRUCTION.md](CONSTRUCTION.md) is the canonical dependency-gated backlog
 for that target.
 
@@ -100,6 +115,8 @@ potential non-increase inside the claimed sub-bitlength horizon.
 - [RG-CERT-0.md](RG-CERT-0.md) is the audited exact bootstrap data language.
 - [RG-MACRO-001.md](RG-MACRO-001.md) is the closed-form symbolic compression
   of the current partial-certificate frontier.
+- [RG-TRANS-001.md](RG-TRANS-001.md) is the exact global parametric transition
+  table and hard-return reduction.
 - [CONSTRUCTION.md](CONSTRUCTION.md) is the single active global-construction
   backlog and architecture filter.
 - [STATUS.md](STATUS.md) states exactly what is and is not claimed.

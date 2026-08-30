@@ -71,6 +71,27 @@ maximal endpoint \(3^s x+B\) refines into exactly one exponent-\(s\) child and
 one exponent-\(s+1\) child.  This completes the `T1` description gate.  It
 does not prove that the refined children form a finite closed state system.
 
+[RG-TRANS-001.md](RG-TRANS-001.md) supplies the exact global transition
+closure.  Every positive integer has a unique parametric label
+
+\[
+N_{r,\eta}(w)=2^r(4w+2\eta+1)-1.
+\]
+
+Four terminal/soft guard rows either stop at \(1\) or coalesce with a strictly
+smaller positive integer.  The one remaining row is the hard family
+
+\[
+r\ge2,\qquad \eta\not\equiv r\pmod2.
+\]
+
+Strong induction normalizes every input into that family or \(1\), and an
+exact return map \(F\) closes the hard family.  Lemma 8.1 of RG-TRANS-001
+partitions every one of the 145 affine gap endpoints into these rows.  This
+completes `T2` as a finite set of parametric guard schemas.  The parameters
+are unbounded, and termination of \(F\) is Collatz-equivalent; transition
+closure is not progress.
+
 One-bit bounded-search refinement from \(K=12\) to \(K=13\) gives 18
 low-resolved/high-unresolved parents, 27 low-unresolved/high-resolved parents,
 and 100 parents with both children still unresolved. At longer horizons the
@@ -117,41 +138,46 @@ guarded transition
 recharges all candidates in that class. A successor rank must use genuinely
 richer state or a nonlinear well-founded order.
 
+The smaller exact return
+
+\[
+F(31)=91
+\]
+
+already grows numerically and raises the local replay counter from zero to
+one.  It is the first boundary-normalized recharge witness and the minimum
+falsification test for any proposed successor rank.
+
 ### B4. Representation without progress
 
 The known finite mixed binary/ternary rewrite system is an exact Collatz
 representation, but its universal termination is equivalent to Collatz.
-Encoding the 145 gaps in that grammar is useful only if a new coalescence
-macro or independently checked rank is added.
+RG-TRANS-001 now compresses every one of the 145 gaps into an exact closed
+hard return and proves the same equivalence boundary.  Re-encoding or
+iterating that return is useful only if a stronger coalescence macro or
+independently checked rank is added.
 
 The detailed blocker proofs remain linked from
 [PROVENANCE.md](PROVENANCE.md) and the archive failure ledger. None of these
 filters rules out all recursive graphs or all well-founded ranks.
 
-## 4. Active theorem target: RG-TRANS-001
+## 4. Active theorem target: RG-RANK-001
 
-The next mathematical deliverable is not a larger sweep. It is the following
-finite transition theorem.
+RG-TRANS-001 answers state sufficiency, exactness, and global guard coverage.
+The sole active mathematical deliverable is now progress on the closed hard
+return.
 
-> **RG-TRANS-001 target.** Exhibit finitely many symbolic states and exact
-> guarded macros covering every continuation of the 145 RG-CERT-0 gaps, such
-> that every macro either coalesces with a uniformly smaller positive start or
-> moves to another state while strictly decreasing an explicit well-founded
-> rank. Cover every canonical boundary instance, including the Mersenne
-> high-child chain and parameter value zero.
+> **RG-RANK-001 target.** Define an explicit decidable well-founded rank
+> \(\mathcal R\) on the hard states of RG-TRANS-001 and prove
+> \(\mathcal R(F(h))<\mathcal R(h)\) for every nonterminal hard state \(h\);
+> or give a stronger exact coalescence macro that sends every hard return to a
+> state already smaller in a proved well-founded order.
 
-The transition theorem must answer four separate questions:
-
-1. **State sufficiency:** which finite carry/mixed-radix data determine the
-   next macro and its guards?
-2. **Exactness:** what affine or mixed-radix identity proves the macro for the
-   entire parameter domain?
-3. **Coverage:** why do the guards form an exhaustive partition rather than a
-   bounded sample?
-4. **Progress:** what smaller target or well-founded rank handles every edge,
-   especially cross-label recharge?
-
-Until all four answers exist, there is no reason to implement RG-CERT-1.
+The theorem must cover arbitrary unbounded \(r,w\), every cross-label return,
+the Mersenne high-child chain, and every canonical boundary value including
+\(w=0\).  Its definition may not use stopping time, assumed convergence, or
+an unbounded future search.  Until this progress theorem exists, there is no
+reason to implement RG-CERT-1.
 
 ## 5. Ranked candidate policy
 
@@ -177,15 +203,16 @@ This table is the single active backlog for the construction program.
 |---|---|---|---|---|
 | `C0` | RG-CERT-0 schema, checker, and static \(K=12\) boundary | RG-SOUND-001 | Published | Hostile audit passed |
 | `T1` | Exact symbolic features for the 145 gaps | C0 | Completed | RG-MACRO-001 formulas reproduce all 145 without using “search miss” as a state invariant |
-| `T2` | Finite guarded child/successor transition table | T1 | Active | Universal guard partition and exact identities |
-| `R1` | First rank or smaller-target mechanism for every T2 edge | T2 | Pending | Passes B1--B4 kill tests |
+| `T2` | Finite guarded child/successor transition table | T1 | Completed | RG-TRANS-001 gives a universal guard partition and exact identities |
+| `R1` | First rank or smaller-target mechanism for every T2 edge | T2 | Active | Passes B1--B4 kill tests |
 | `S1` | RG-CERT-1 language and checker correspondence | T2, R1 | Pending | Independent specification audit |
 | `G1` | Static globally covering certificate | S1 | Pending | `--require-global` succeeds and F1--F7 audit passes |
 
-Only `T2` may consume exploratory computation now, and every proposed state
-must be a quotient of the exact RG-MACRO-001 coefficient/guard data rather
-than a raw finite-horizon miss bitmask. Schema/checker work starts only after
-a rank mechanism survives its kill tests.
+Only `R1` may consume exploratory computation now.  Every candidate must act
+on the exact RG-TRANS-001 hard return rather than a raw finite-horizon miss
+bitmask, and it must be killed first by \(31\mapsto91\), the recorded
+cross-label recharge transition, and the Mersenne boundary. Schema/checker
+work starts only after a rank mechanism survives those tests.
 
 ## 7. Work and review discipline
 

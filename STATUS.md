@@ -30,6 +30,15 @@ preserving the maximal endpoint exponent and one child incrementing it.  No
 finite transition closure or globally decreasing rank follows from that
 refinement.
 
+`RG-TRANS-001` supplies the missing transition closure as a global five-row
+parametric table.  Four terminal/soft rows stop or coalesce with a smaller
+integer; the fifth is one closed hard state type with return map \(F\).
+Every positive integer, and in particular every instance of the 145 affine
+gaps, enters exactly one row.  The table is not a finite-state automaton:
+its natural parameters are unbounded.  Termination of \(F\) is equivalent to
+Collatz, so the independent well-founded rank required for progress remains
+missing.
+
 ## Claim classification
 
 - **Claim type:** class-wide method obstruction.
@@ -44,9 +53,10 @@ refinement.
 - **Review status:** internal mathematical and reproducibility gates passed;
   external specialist review pending.
 
-For the graph construction, the reviewed claim is narrower: every serialized
-edge is universally valid and the incompleteness boundary is exact. No global
-cover, richer recursive rank, or Collatz conclusion is claimed.
+For the static RG-CERT-0 graph, every serialized edge is universally valid and
+the incompleteness boundary is exact.  RG-TRANS-001 gives global parametric
+transition coverage, but no globally ranked F1--F7 graph, richer recursive
+rank, or Collatz conclusion is claimed.
 
 ## Promotion gates
 
@@ -104,6 +114,21 @@ Internal package gates:
 | Independent derivation and hostile-data audit | Passed |
 | Optimized-mode false-PASS test | Passed; fails closed |
 | Authoritative RG-CERT-0 companion audit | Passed; remains explicitly partial |
-| Finite guarded transition closure | Missing; next construction gate |
+| Finite parametric transition closure | Supplied separately by RG-TRANS-001 |
 | Rank decrease across all gap successors | Missing |
+| Global Collatz consequence | None |
+
+## RG-TRANS-001 gates
+
+| Gate | Result |
+|---|---|
+| Unique global canonical labels | Proved |
+| Terminal/soft guard partition | Exhaustive; exact smaller coalescences |
+| Soft normalizer | Terminates by strict numerical decrease |
+| Hard-family return | Closed exact coalescence transition |
+| Entry of all 145 RG-CERT-0 gaps | Proved by odd-affine valuation cells |
+| Collatz-equivalence boundary | Proved in both directions |
+| Independent mathematical audit | Passed after two local repairs |
+| Bounded exact-integer identity diagnostic | Passed through 10,000 |
+| Well-founded rank on every hard return | Missing; sole active construction gate |
 | Global Collatz consequence | None |

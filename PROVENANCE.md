@@ -32,6 +32,12 @@ The ranked-coalescence soundness reconstruction also uses:
 - [Round 7 affine coalescence search](https://github.com/Sodelin/Collatz-Conjecture-Work/blob/2e7eae2bb998b14e5443e6c440154130a0049467/verification/round7_affine_coalescence_search.py),
   which supplies the bounded ordinary-map Route B certificates imported by
   RG-CERT-0.
+- [L13 refined Mersenne child macros](https://github.com/Sodelin/Collatz-Conjecture-Work/blob/2e7eae2bb998b14e5443e6c440154130a0049467/proof-search/lemmas/L13_Refined_Mersenne_Child_Macros.md),
+  which proves the compatible smaller-target identity and hard-child affine
+  normalization used by RG-TRANS-001.
+- [Hard-boundary return system](https://github.com/Sodelin/Collatz-Conjecture-Work/blob/2e7eae2bb998b14e5443e6c440154130a0049467/proof-search/routes/AB_hard_boundary_return_system.md),
+  which records the total soft normalizer, closed hard return, exact
+  Collatz-equivalence boundary, and first replay-rank recharge witness.
 
 `H-FCS-001` is presented here as a standalone direct theorem. It does not use
 the quantitative debt conclusion of Theorem 6A.1; it uses the underlying
@@ -179,3 +185,31 @@ constants, top-level claim and map labels, non-Route-B records, duplicate
 keys, missing edges, and extra edges were all rejected.  The authoritative
 RG-CERT-0 checker remains a mandatory companion because RG-MACRO-001 is a
 symbolic-classification audit, not a second F1--F7 semantics checker.
+
+## RG-TRANS-001 global transition reconstruction
+
+RG-TRANS-001 reconstructs the accepted archive's L13 and hard-boundary return
+identities as one self-contained human theorem.  It adds the explicit
+odd-affine valuation-cell lemma that sends every instance of every
+RG-CERT-0 gap into the same global parametric table.  This is transition
+closure only: the theorem proves that termination of the closed hard return is
+Collatz-equivalent and does not claim an independent rank.
+
+```text
+RG-TRANS-001.md
+SHA-256 8F8D11B5F84653B255AB5DA889E9BC0A207C2630F3AF45B8EA36A0E4059C0F0B
+```
+
+Independent review rederived the canonical labels, all three soft
+coalescences, hard endpoint, well-founded normalizer, both directions of the
+return-map equivalence, affine valuation partition, and the \(31\mapsto91\)
+rank-recharge witness.  Review found and repaired one malformed formula token
+and one zero-boundary overreach before acceptance, then separately confirmed
+the strengthened exact-coalescence statements.  A non-retained exact-integer
+diagnostic checked every guard and identity for all positive inputs through
+10,000.  The written universal proof, not that bounded diagnostic, is the
+artifact.
+
+The construction is a clean publication reconstruction of archived
+project-specific consequences of standard parity-affine identities.  No
+literature-novelty claim is made.
