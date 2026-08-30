@@ -213,3 +213,33 @@ artifact.
 The construction is a clean publication reconstruction of archived
 project-specific consequences of standard parity-affine identities.  No
 literature-novelty claim is made.
+
+## RG-RANK-OBS-001 cross-label obstruction
+
+RG-RANK-OBS-001 was derived in the publication repository from the exact hard
+endpoint, canonical-label, and local replay-debt formulas already published in
+RG-TRANS-001.  It imports no new computational claim from the archive and
+uses no bounded search.  The accepted archive and RG-TRANS-001 remain the
+lineage for the underlying return system; the universal cross-label
+exact-recharge theorem is presented here as a new theorem-facing deduction.
+No literature-novelty claim is made.
+
+```text
+RG-RANK-OBS-001.md
+SHA-256 2BE0CE8352F80E1962BFD1F69324D2C7EA09A9061C4781E43866E684AD6CD4F6
+```
+
+One independent derivation first established the constructive congruence
+formula without editing publication files.  A separate no-edit audit then
+rederived the successor ray, arbitrary exact target debt, zero source replay
+quotient, both numerical examples, and the rank-factor contradiction for an
+arbitrary well-founded relation.  That audit found one scope defect in the
+draft: the projected \(Q=0\) layer was said to *be* a complete loopless graph,
+although the theorem only proved that it *contains* one.  The wording was
+repaired, and the reviewer confirmed that projected self-loops may also occur.
+The final theorem passed after that repair.
+
+This artifact rules out ranks that factor only through
+\((\text{hard label},Q)\).  It does not rule out full-parameter or
+augmented-state ranks, prove a concrete return cycle, establish one-orbit
+unbounded recharge, or imply a Collatz conclusion.

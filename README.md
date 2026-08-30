@@ -83,11 +83,21 @@ into that table.  This is a global transition construction, but not a Collatz
 proof: termination of \(F\) is Collatz-equivalent, and no independent
 well-founded rank for all \(F\)-edges is known.
 
+[RG-RANK-OBS-001.md](RG-RANK-OBS-001.md) proves an exact limitation on the
+current rank features.  For every ordered pair of distinct hard labels and
+every \(q\ge0\), it constructs an \(F\)-edge whose source replay quotient is
+zero and whose target quotient is exactly \(q\).  Hence no well-founded rank
+factoring only through \((\text{hard label},Q)\) can decrease on every return,
+even if it is nonlinear or ordinal-valued.  This is a stronger architecture
+obstruction, not the missing rank: full-parameter and augmented-state ranks
+remain open.
+
 The abstract kernel is compiled in
 [`lean/NewMathDiscovery/RankedCoalescenceSound.lean`](lean/NewMathDiscovery/RankedCoalescenceSound.lean).
 No globally ranked graph satisfying all obligations F1--F7 is claimed.
 Transition coverage is now global, but constructing an independent rank that
-decreases on every hard return is the remaining research target.
+decreases on every hard return is the remaining research target; that rank
+must use information beyond the hard label and local replay quotient.
 [CONSTRUCTION.md](CONSTRUCTION.md) is the canonical dependency-gated backlog
 for that target.
 
@@ -117,6 +127,8 @@ potential non-increase inside the claimed sub-bitlength horizon.
   of the current partial-certificate frontier.
 - [RG-TRANS-001.md](RG-TRANS-001.md) is the exact global parametric transition
   table and hard-return reduction.
+- [RG-RANK-OBS-001.md](RG-RANK-OBS-001.md) is the exact cross-label
+  replay-recharge theorem and rank-factor obstruction.
 - [CONSTRUCTION.md](CONSTRUCTION.md) is the single active global-construction
   backlog and architecture filter.
 - [STATUS.md](STATUS.md) states exactly what is and is not claimed.

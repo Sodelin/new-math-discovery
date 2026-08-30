@@ -136,7 +136,7 @@ guarded transition
 \]
 
 recharges all candidates in that class. A successor rank must use genuinely
-richer state or a nonlinear well-founded order.
+richer state; nonlinearity alone is not enough.
 
 The smaller exact return
 
@@ -147,6 +147,21 @@ F(31)=91
 already grows numerically and raises the local replay counter from zero to
 one.  It is the first boundary-normalized recharge witness and the minimum
 falsification test for any proposed successor rank.
+
+[RG-RANK-OBS-001.md](RG-RANK-OBS-001.md) upgrades those witnesses to a
+universal exact obstruction.  For every ordered pair of distinct hard labels
+\(\alpha,\beta\) and every \(q\ge0\), it constructs a hard return
+
+\[
+(\alpha,Q=0)\longrightarrow(\beta,Q=q).
+\]
+
+The \(Q=0\) feature layer therefore contains both directions between every
+two distinct labels.  No rank into any well-founded relation can decrease on
+all returns if it factors only through \((\text{hard label},Q)\), regardless
+of whether its formula is nonlinear, lexicographic, multiset-valued, or
+ordinal-valued.  This still leaves ranks that inspect the full hard parameter
+or other augmented state, and it does not rule out stronger coalescences.
 
 ### B4. Representation without progress
 
@@ -186,6 +201,8 @@ A rank candidate is admitted to a full search cycle only if it is:
 - defined without stopping time, convergence, or an unbounded future search;
 - natural-, ordinal-, or other explicitly well-founded-valued;
 - decidable by a small trusted checker or finite proof objects;
+- distinguishes states inside a common
+  \((\text{hard label},Q)\) fibre, as required by RG-RANK-OBS-001;
 - tested first on the Mersenne refinement
   \(M_K(2y+1)=M_{K+1}(y)\);
 - tested on the canonical boundary \(y=0\); and
@@ -204,15 +221,18 @@ This table is the single active backlog for the construction program.
 | `C0` | RG-CERT-0 schema, checker, and static \(K=12\) boundary | RG-SOUND-001 | Published | Hostile audit passed |
 | `T1` | Exact symbolic features for the 145 gaps | C0 | Completed | RG-MACRO-001 formulas reproduce all 145 without using “search miss” as a state invariant |
 | `T2` | Finite guarded child/successor transition table | T1 | Completed | RG-TRANS-001 gives a universal guard partition and exact identities |
-| `R1` | First rank or smaller-target mechanism for every T2 edge | T2 | Active | Passes B1--B4 kill tests |
+| `O1` | Exact obstruction to label-and-replay-quotient ranks | T2 | Completed | RG-RANK-OBS-001 constructs every distinct cross-label direction with arbitrary exact recharge |
+| `R1` | First rank or smaller-target mechanism for every T2 edge | T2, O1 | Active | Passes B1--B4 and distinguishes states within each \((\text{label},Q)\) fibre |
 | `S1` | RG-CERT-1 language and checker correspondence | T2, R1 | Pending | Independent specification audit |
 | `G1` | Static globally covering certificate | S1 | Pending | `--require-global` succeeds and F1--F7 audit passes |
 
 Only `R1` may consume exploratory computation now.  Every candidate must act
 on the exact RG-TRANS-001 hard return rather than a raw finite-horizon miss
-bitmask, and it must be killed first by \(31\mapsto91\), the recorded
-cross-label recharge transition, and the Mersenne boundary. Schema/checker
-work starts only after a rank mechanism survives those tests.
+bitmask.  Any candidate factoring through \((\text{hard label},Q)\) is already
+closed by RG-RANK-OBS-001.  A richer surviving candidate must then be tested
+first on \(31\mapsto91\), the recorded large recharge transition, and the
+Mersenne boundary. Schema/checker work starts only after a rank mechanism
+survives those tests.
 
 ## 7. Work and review discipline
 

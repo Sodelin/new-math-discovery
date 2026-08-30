@@ -39,6 +39,14 @@ its natural parameters are unbounded.  Termination of \(F\) is equivalent to
 Collatz, so the independent well-founded rank required for progress remains
 missing.
 
+`RG-RANK-OBS-001` supplies a universal exact obstruction at that progress
+boundary.  Between every ordered pair of distinct hard labels it constructs
+hard returns from replay quotient zero to any prescribed target quotient.
+The resulting two-way zero-quotient feature transitions rule out every rank
+factoring only through \((\text{hard label},Q)\), with any well-founded
+codomain.  It does not rule out ranks using the full parameter or augmented
+state, so `R1` remains active.
+
 ## Claim classification
 
 - **Claim type:** class-wide method obstruction.
@@ -55,8 +63,9 @@ missing.
 
 For the static RG-CERT-0 graph, every serialized edge is universally valid and
 the incompleteness boundary is exact.  RG-TRANS-001 gives global parametric
-transition coverage, but no globally ranked F1--F7 graph, richer recursive
-rank, or Collatz conclusion is claimed.
+transition coverage, and RG-RANK-OBS-001 eliminates one broad rank-factor
+class.  No globally ranked F1--F7 graph, richer recursive rank, or Collatz
+conclusion is claimed.
 
 ## Promotion gates
 
@@ -131,4 +140,17 @@ Internal package gates:
 | Independent mathematical audit | Passed after two local repairs |
 | Bounded exact-integer identity diagnostic | Passed through 10,000 |
 | Well-founded rank on every hard return | Missing; sole active construction gate |
+| Global Collatz consequence | None |
+
+## RG-RANK-OBS-001 gates
+
+| Gate | Result |
+|---|---|
+| Exact successor ray for every ordered hard-label pair | Proved |
+| Arbitrary target replay quotient | Proved in the exact form \(D=(h+2)q\) |
+| Source replay quotient on every distinct-label construction | Exactly zero |
+| Rank-factor obstruction | Proved for every codomain with a well-founded relation |
+| Boundary cases and two numerical examples | Passed independent exact audit |
+| Independent mathematical and scope audit | Passed after one projected-graph wording repair |
+| Full-parameter or augmented-state ranks | Not ruled out |
 | Global Collatz consequence | None |
