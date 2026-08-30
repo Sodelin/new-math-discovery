@@ -1,0 +1,99 @@
+{
+  "manifest_schema": "research-bank-source-export/1.0",
+  "manifest_id": "new-math-discovery.bank-export/2026-08-30",
+  "source_repository": "Sodelin/new-math-discovery",
+  "source_commit": "a8106486bac4122613775c31563050c27365961c",
+  "mutable_source_owner": "Sodelin/new-math-discovery",
+  "upstream_provenance_repository": "Sodelin/Collatz-Conjecture-Work",
+  "bank_role": "immutable source-bound snapshots and annotations",
+  "bank_may_promote_source_status": false,
+  "created_at": "2026-08-30",
+  "objects": [
+    {
+      "object_id": "new-math-discovery.h-fcs-001/theorem",
+      "object_type": "theorem-candidate",
+      "origin_path": "THEOREM.md",
+      "digest_algorithm": "sha256",
+      "digest": "554c4aad25f3db87c9b3d40ee6b595d69072c9c6cd1be185f854fbfaf7d8c581",
+      "scope": "Finite-fixed-center corrected-log obstruction theorem H-FCS-001.",
+      "status_at_snapshot": "complete human proof with internal adversarial reconstruction; external specialist review pending; not Lean-formalized",
+      "verification_boundary": {
+        "establishes": ["the source-bound theorem statement and human proof at the pinned digest"],
+        "does_not_establish": ["Collatz convergence", "Collatz divergence", "impossibility of all ranking functions", "certified novelty"]
+      },
+      "mutable_in_bank": false
+    },
+    {
+      "object_id": "new-math-discovery.rg-sound-001/specification",
+      "object_type": "certificate-soundness-theorem",
+      "origin_path": "RG-SOUND-001.md",
+      "digest_algorithm": "sha256",
+      "digest": "65713eefa86916ef4514bbf9513b113fa7499d4e148cec18593a1b67079424d3",
+      "scope": "Human specification and proof of the abstract ranked-coalescence graph soundness interface.",
+      "status_at_snapshot": "audited human semantics with a compiled abstract Lean kernel; no concrete globally covering graph",
+      "verification_boundary": {
+        "establishes": ["the conditional soundness interface as stated"],
+        "does_not_establish": ["existence of an F1-F7 global certificate", "Collatz convergence"]
+      },
+      "mutable_in_bank": false
+    },
+    {
+      "object_id": "new-math-discovery.rg-sound-001/lean-kernel",
+      "object_type": "lean-artifact",
+      "origin_path": "lean/NewMathDiscovery/RankedCoalescenceSound.lean",
+      "digest_algorithm": "sha256",
+      "digest": "2f6b8b6dc0ba491a17ed1c4b31a8c8ecf56d3f9ede3e91de595379a007e97eaf",
+      "scope": "Carrier-generic ranked-coalescence soundness kernel under the pinned repository toolchain.",
+      "status_at_snapshot": "compiled with standard axioms and no proof holes according to the retained build record",
+      "verification_boundary": {
+        "establishes": ["the exact encoded conditional theorem under the recorded toolchain and axiom boundary"],
+        "does_not_establish": ["semantic identity without human audit", "a global certificate", "Collatz convergence", "novelty"]
+      },
+      "mutable_in_bank": false
+    },
+    {
+      "object_id": "new-math-discovery.rg-cert-0/specification",
+      "object_type": "finite-certificate-language",
+      "origin_path": "RG-CERT-0.md",
+      "digest_algorithm": "sha256",
+      "digest": "53ac5dbe8a3fb1a17a3879863c050baab818999601e151948cd387dcbbba86fa",
+      "scope": "Concrete RG-CERT-0/v0 finite data language and F1-F7 gate mapping.",
+      "status_at_snapshot": "audited specification; global certificate absent",
+      "verification_boundary": {
+        "establishes": ["the finite interface and its stated checking obligations"],
+        "does_not_establish": ["that any bundle has global source coverage", "Collatz convergence"]
+      },
+      "mutable_in_bank": false
+    },
+    {
+      "object_id": "new-math-discovery.rg-cert-0/checker",
+      "object_type": "checker",
+      "origin_path": "verification/check_rg_cert0.py",
+      "digest_algorithm": "sha256",
+      "digest": "7d6f5a61fb5d718c4f45265e30a0b9715472911fc5d2a9f607ddf928b8b2fa6a",
+      "scope": "Dependency-free fail-closed checker for RG-CERT-0/v0 artifacts.",
+      "status_at_snapshot": "self-tests, hostile mutations, and partial-bundle replay passed as documented",
+      "verification_boundary": {
+        "establishes": ["only the properties checked for a supplied artifact under the recorded interpreter and command"],
+        "does_not_establish": ["checker soundness by self-execution alone", "global coverage when --require-global fails", "Collatz convergence"]
+      },
+      "mutable_in_bank": false
+    },
+    {
+      "object_id": "new-math-discovery.rg-cert-0/k12-partial-bundle",
+      "object_type": "finite-certificate",
+      "origin_path": "verification/rg_cert0_route_b_k12.json",
+      "digest_algorithm": "sha256",
+      "digest": "5599f8c39449d944543e52377da6e20c2fa941902b0403e9ec17bf3bba25812b",
+      "scope": "Static K=12 partial residue/coalescence graph bundle.",
+      "status_at_snapshot": "1,905 listed edges pass the recorded checks; exact F3 source coverage is incomplete on 145 residues modulo 4,096",
+      "verification_boundary": {
+        "establishes": ["the exact checked finite edges and explicit coverage deficit at this digest"],
+        "does_not_establish": ["global source coverage", "a global RG-CERT-0 certificate", "Collatz convergence"]
+      },
+      "mutable_in_bank": false
+    }
+  ],
+  "future_export_rule": "A changed source creates a new snapshot version with new digests and a supersession link; old objects remain immutable and retain their status-at-snapshot.",
+  "boundary_document": "research-objects/README.md"
+}

@@ -115,6 +115,15 @@ potential non-increase inside the claimed sub-bitlength horizon.
   is the static partial certificate data.
 - [`verification/README.md`](verification/README.md) explains the trusted
   checker/untrusted producer boundary and all reproduction commands.
+- [`research-objects/README.md`](research-objects/README.md) defines the
+  source-versus-bank ownership boundary.
+- [`research-objects/BANK_EXPORT_MANIFEST.json`](research-objects/BANK_EXPORT_MANIFEST.json)
+  pins immutable source-side export candidates and their exact non-implications.
+
+The shared research bank may index or annotate pinned snapshots. This
+repository remains authoritative for mutable theorem wording, status, Lean
+source, checker code, certificate coverage, and corrections. Bank annotations
+cannot promote a claim here.
 
 The verifier requires Python 3.8 or newer and uses only the standard library.
 Run it from the repository root without optimized mode:
