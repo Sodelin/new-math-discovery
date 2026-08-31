@@ -181,11 +181,24 @@ theorem unbounded_target_on_gauge_fixed_kernel (bound : Nat) :
   simp [target, witness]
   omega
 
+/-- Every sensor in a tail beginning at `offset` has a gauge-fixed kernel
+witness whose target coordinate is larger than `offset`.  Taking any fixed
+finite number of indices from later and later tails makes the degeneration
+simultaneous across the whole finite representation. -/
+theorem tail_witnesses_uniformly_large (offset index : Nat) :
+    observe (offset + index) (witness (offset + index)) = 0 ∧
+    (witness (offset + index)).2 = -1 ∧
+    target (witness (offset + index)) > Int.ofNat offset := by
+  refine ⟨witness_in_sensor_kernel (offset + index), rfl, ?_⟩
+  simp [target, witness]
+  omega
+
 #print axioms target_sensor_minor
 #print axioms distinct_sensor_minor
 #print axioms witness_in_sensor_kernel
 #print axioms target_nonzero_on_witness
 #print axioms unbounded_target_on_gauge_fixed_kernel
+#print axioms tail_witnesses_uniformly_large
 
 end RankTwoInstability
 

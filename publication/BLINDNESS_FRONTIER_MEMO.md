@@ -111,8 +111,9 @@ and sensor rows
 r_n = (1, n + 1).
 ```
 
-Every two distinct rows have nonzero determinant, so every finite prefix has
-the same uniform rank-two matroid.  But
+Every two distinct rows have nonzero determinant.  Thus the target together
+with any fixed-size finite block of sensors represents the same uniform
+rank-two matroid.  But
 
 ```text
 d_n = (n + 1, -1)
@@ -120,10 +121,12 @@ d_n = (n + 1, -1)
 
 lies in the kernel of `r_n`, while `q(d_n) = n + 1`.  In the projective chart
 whose second coordinate is `-1`, these blind directions approach the target
-axis.  Equivalently, after Euclidean normalization the target value approaches
-its maximum, even though the representation is approaching a forbidden
-parallelism.  The naive objective therefore rewards degeneration toward a
-different matroid.
+axis.  Choose later and later blocks `r_N, ..., r_(N+k-1)` for any fixed `k`:
+all their blind directions degenerate simultaneously while all rows remain
+pairwise independent.  Equivalently, after Euclidean normalization every
+target value approaches its maximum, even though the sensors approach mutual
+parallelism.  The naive minimum-over-coalitions objective therefore rewards
+approaching a different matroid.
 
 Lean identifiers for the exact integer core:
 
@@ -132,6 +135,7 @@ Lean identifiers for the exact integer core:
 - `NewMathDiscovery.LinearBlindness.RankTwoInstability.witness_in_sensor_kernel`
 - `NewMathDiscovery.LinearBlindness.RankTwoInstability.target_nonzero_on_witness`
 - `NewMathDiscovery.LinearBlindness.RankTwoInstability.unbounded_target_on_gauge_fixed_kernel`
+- `NewMathDiscovery.LinearBlindness.RankTwoInstability.tail_witnesses_uniformly_large`
 
 The projective-limit interpretation is not formalized in Lean; the
 determinants, kernel identities, and unbounded gauge-fixed witnesses are.
